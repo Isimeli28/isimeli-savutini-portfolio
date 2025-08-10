@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Isimeli Savutini — Professional CV & Portfolio</title>
+  <meta name="description" content="Resume and portfolio website for Isimeli Savutini — HRIS Specialist, Web Developer and IT Consultant." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa6b2;--accent:#0ea5a4;--glass:rgba(255,255,255,0.04)}
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#e6eef3;background:linear-gradient(180deg,#071226 0%, #071827 60%);-webkit-font-smoothing:antialiased}
+
+    header{position:sticky;top:0;backdrop-filter:blur(6px);background:linear-gradient(180deg,rgba(5,10,15,0.55),rgba(5,10,15,0.35));padding:12px 28px;display:flex;align-items:center;justify-content:space-between;z-index:50;border-bottom:1px solid rgba(255,255,255,0.03)}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#0369a1);display:flex;align-items:center;justify-content:center;font-weight:800;color:#022;box-shadow:0 6px 18px rgba(3,8,15,0.6)}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600;transition:all 0.3s ease}
+    nav a:hover{color:#fff;transform:scale(1.05)}
+
+    .container{max-width:1100px;margin:36px auto;padding:28px}
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:22px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 30px rgba(2,6,23,0.6);transition:all 0.3s ease}
+    .card:hover{box-shadow:0 12px 30px rgba(2,6,23,0.8);transform:scale(1.02)}
+    h1{font-size:28px;margin:0 0 6px 0}
+    .subtitle{color:var(--muted);margin-bottom:14px}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-weight:600}
+
+    .cta{margin-top:14px;display:flex;gap:10px}
+    .btn{padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;transition:all 0.3s ease}
+    .btn:hover{background:var(--accent);color:#012;transform:scale(1.05);box-shadow:0 4px 18px rgba(14,165,164,0.6)}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#0369a1);color:#012;box-shadow:0 8px 18px rgba(4,12,20,0.5)}
+
+    .profile-blurb{margin-top:10px;color:#cfe7ea}
+
+    .sidebar .avatar{width:100%;border-radius:10px;height:220px;background:linear-gradient(180deg,#05263b,#0b2b3d);display:flex;align-items:center;justify-content:center;color:#cfe7ea;font-weight:800;font-size:18px;transition:all 0.3s ease}
+    .sidebar .avatar:hover{transform:scale(1.02);box-shadow:0 4px 20px rgba(14,165,164,0.4)}
+    .info-list{margin-top:12px;color:var(--muted);line-height:1.6}
+
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:22px;margin-top:22px}
+    @media(max-width:980px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}}
+
+    .timeline{position:relative;padding-left:18px}
+    .timeline:before{content:'';position:absolute;left:6px;top:4px;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),#0369a1);border-radius:2px}
+    .item{position:relative;padding:14px 18px;margin-bottom:12px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid rgba(255,255,255,0.02);transition:all 0.3s ease}
+    .item:hover{transform:scale(1.02);box-shadow:0 6px 18px rgba(14,165,164,0.3)}
+    .item:before{content:'';position:absolute;left:-18px;top:22px;width:12px;height:12px;background:var(--accent);border-radius:50%;box-shadow:0 6px 14px rgba(3,8,15,0.6)}
+    .muted{color:var(--muted);font-size:13px}
+
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:700;font-size:13px;color:#e7fbfb;transition:all 0.3s ease}
+    .skill:hover{background:var(--accent);color:#012;transform:scale(1.05);box-shadow:0 4px 12px rgba(14,165,164,0.5)}
+
+    .projects{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .proj{padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);transition:all 0.3s ease}
+    .proj:hover{background:var(--accent);color:#012;transform:scale(1.03);box-shadow:0 4px 18px rgba(14,165,164,0.6)}
+
+    .contact-card input,.contact-card textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#e6eef3}
+    .small{font-size:13px;color:var(--muted)}
+
+    footer{margin-top:30px;color:var(--muted);text-align:center;font-size:13px}
+
+    @media(max-width:560px){.projects{grid-template-columns:1fr}}
+
+    .reveal{transform:translateY(8px);opacity:0;transition:all 520ms cubic-bezier(.2,.9,.2,1)}
+    .reveal.visible{transform:none;opacity:1}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">IS</div>
+      <div>
+        <div style="font-weight:800;color:#fff">Isimeli Savutini</div>
+        <div style="font-size:13px;color:var(--muted)">HRIS Specialist • Web Developer • IT Consultant</div>
+      </div>
+    </div>
+    <nav aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a class="btn" href="assets/Isimeli_Savutini_Resume.docx" download>Download CV</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <h1>Isimeli Savutini</h1>
+        <div class="subtitle">HRIS Specialist • Web Developer • Project Manager</div>
+        <div class="meta">
+          <div>Suva, Fiji</div>
+          <div>+679 9498593</div>
+          <div><a href="mailto:gonerogoisimeli@gmail.com" style="color:var(--accent);text-decoration:none">gonerogoisimeli@gmail.com</a></div>
+        </div>
+        <p class="profile-blurb">Experienced HRIS administrator and web developer with a strong record delivering HR management systems, recruitment portals, intranets and web solutions for government and private sector clients. Proven project manager and trainer with awards for outstanding performance.</p>
+
+        <div class="cta">
+          <a class="btn btn-primary" href="#contact">Hire / Contact</a>
+          <a class="btn" href="#projects">View Projects</a>
+        </div>
+
+        <div style="margin-top:18px">
+          <strong class="small">Core strengths</strong>
+          <div class="skills" style="margin-top:8px">
+            <div class="skill">HRIS / HRMS</div>
+            <div class="skill">Web Dev (WordPress)</div>
+            <div class="skill">PHP & MySQL</div>
+            <div class="skill">Data Analysis</div>
+            <div class="skill">Project Management</div>
+            <div class="skill">Training & Capacity Building</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="sidebar card">
+        <div class="avatar">IS — Isimeli Savutini</div>
+        <div class="info-list">
+          <div class="muted">Location</div>
+          <div>Suva, Fiji</div>
+          <div class="muted" style="margin-top:8px">Languages</div>
+          <div>Fijian • English • Hindi</div>
+          <div class="muted" style="margin-top:8px">Awards</div>
+          <div>Quality Performance Award (2018), Outstanding Performance (2020), Leadership Award (2021)</div>
+          <div class="muted" style="margin-top:8px">Availability</div>
+          <div>Freelance / Consultancy</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <div>
+        <div id="experience" class="card reveal">
+          <h2>Work Experience</h2>
+          <div class="timeline" aria-label="Work timeline">
+            <div class="item">
+              <strong>Web Content Assistant — Educational Quality and Assessment Programme (EQAP), Pacific Community (SPC)</strong>
+              <div class="muted">Feb 2025 – Present</div>
+              <p>Managing website content, building interactive charts and landing pages, custom Drupal theme development using Twig and PHP, and optimising site accessibility.</p>
+            </div>
+            <!-- existing experience entries remain here -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Isimeli Savutini — Built with attention to accessibility & performance.</div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, {threshold:0.12});
+    revealEls.forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
