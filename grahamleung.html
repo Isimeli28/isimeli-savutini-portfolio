@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GRAHAM LEUNG Portfolio</title>
+  <meta name="description" content="Portfolio website for Hon. John Doe — Attorney General." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #9aa6b2;
+      --accent: #0ea5a4;
+      --glass: rgba(255, 255, 255, 0.04);
+    }
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    html,
+  
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #e6eef3;
+  background: linear-gradient(180deg, #0d1b2a 0%, #1b263b 60%); /* deep navy gradient for law */
+  -webkit-font-smoothing: antialiased;
+}
+
+
+
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(5, 10, 15, 0.55), rgba(5, 10, 15, 0.35));
+      padding: 12px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #0369a1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #022;
+      box-shadow: 0 6px 18px rgba(3, 8, 15, 0.6);
+      user-select: none;
+      font-size: 1.3rem;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 18px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #fff;
+      transform: scale(1.05);
+      outline: none;
+    }
+    .btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: transparent;
+      color: #fff;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: inline-block;
+      user-select: none;
+    }
+    .btn:hover,
+    .btn:focus {
+      background: var(--accent);
+      color: #012;
+      transform: scale(1.05);
+      box-shadow: 0 4px 18px rgba(14, 165, 164, 0.6);
+      outline: none;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), #0369a1);
+      color: #012;
+      box-shadow: 0 8px 18px rgba(4, 12, 20, 0.5);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 36px auto;
+      padding: 28px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 28px;
+      align-items: start;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      padding: 22px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 12px 30px rgba(2, 6, 23, 0.8);
+      transform: scale(1.02);
+    }
+    h1 {
+      font-size: 28px;
+      margin: 0 0 6px 0;
+      color: #fff;
+    }
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+    .profile-blurb {
+      margin-top: 10px;
+      color: #cfe7ea;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    .cta {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .skill {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      font-weight: 700;
+      font-size: 13px;
+      color: #e7fbfb;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    .skill:hover,
+    .skill:focus {
+      background: var(--accent);
+      color: #012;
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(14, 165, 164, 0.5);
+      outline: none;
+      cursor: default;
+    }
+    .sidebar .avatar {
+      width: 100%;
+      border-radius: 10px;
+      height: 220px;
+      background: linear-gradient(180deg, #05263b, #0b2b3d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #cfe7ea;
+      font-weight: 800;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    .sidebar .avatar:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 20px rgba(14, 165, 164, 0.4);
+    }
+    .info-list {
+      margin-top: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 22px;
+      margin-top: 22px;
+    }
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .timeline {
+      position: relative;
+      padding-left: 18px;
+    }
+    .timeline:before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 4px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent), #0369a1);
+      border-radius: 2px;
+    }
+    .item {
+      position: relative;
+      padding: 14px 18px;
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    .item:hover,
+    .item:focus-within {
+      transform: scale(1.02);
+      box-shadow: 0 6px 18px rgba(14, 165, 164, 0.3);
+      outline: none;
+    }
+    .item:before {
+      content: "";
+      position: absolute;
+      left: -18px;
+      top: 22px;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 6px 14px rgba(3, 8, 15, 0.6);
+    }
+    .muted {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 560px) {
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+    .proj {
+      padding: 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    .proj:hover,
+    .proj:focus-within {
+      background: var(--accent);
+      color: #012;
+      transform: scale(1.03);
+      box-shadow: 0 4px 18px rgba(14, 165, 164, 0.6);
+      outline: none;
+    }
+    .small {
+      font-size: 13px;
+      color: var(--muted);
+      user-select: none;
+    }
+    footer {
+      margin-top: 30px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+      user-select: none;
+    }
+    .contact-card input,
+    .contact-card textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      background: transparent;
+      color: #e6eef3;
+      font-family: inherit;
+      font-size: 1rem;
+      resize: vertical;
+    }
+    .contact-card input::placeholder,
+    .contact-card textarea::placeholder {
+      color: var(--muted);
+    }
+    .contact-card input:focus,
+    .contact-card textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 8px rgba(14, 165, 164, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand" aria-label="Site branding">
+      <div class="logo" aria-hidden="true">AG</div>
+      <div>
+        <div style="font-weight:800; color:#fff; font-size:1.25rem;">Graham Leung</div>
+        <div style="font-size:13px; color:var(--muted);">L L . M, L L . B ( H o n), G D L P </div>
+      </div>
+    </div>
+    <nav aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+      <a class="btn" href="#" download>Download CV</a>
+    </nav>
+  </header>
+
+  <main class="container" role="main">
+    <section class="hero" aria-label="Profile overview">
+      <div class="card">
+        <h1>Graham Leung</h1>
+        <div class="subtitle">L L . M, L L . B ( H o n), G D L P </div>
+        <div class="meta">
+          <div>Capital City, Country</div>
+          <div>+679 9929994</div>
+          <div><a href="mailto:john.doe@justice.gov" style="color:var(--accent); text-decoration:none" >ovalaublue@gmail.com</a></div>
+        </div>
+        <p class="profile-blurb">
+          Highly experienced lawyer with over 38 years’ experience in law, diplomacy and governance with extensive practice in governance, administrative law, constitutional law and litigation; legal counsel and advisory services. High-level diplomatic skills gained through previous ambassadorial roles.
+        </p>
+        <p class="profile-blurb">
+       Change and management expertise along with inclusive, transparent and democratic leadership strategy, focusing on staff engagement and empowerment, team cohesion and capacity building.
+        </p>
+        <p class="profile-blurb">
+          Ability to network and build strong professional relationships through positive, empathic and professional communication, and collaborate with key decision makers to provide constructive feedback on best governance, rule of law and human rights.
+        </p>
+
+        <div class="cta">
+          <a class="btn btn-primary" href="#contact">Contact / Hire</a>
+        </div>
+
+        <div style="margin-top: 18px">
+          <strong class="small">Core strengths</strong>
+          <div class="skills" style="margin-top: 8px;">
+            <div class="skill">Strong leadership and people management skills, including staff mentoring</div>
+            <div class="skill">Strong management of multidisciplinary and multi-cultural teams / Cross-cultural skills</div>
+            <div class="skill">Sound knowledge of the socio- political situations, government systems and public policy processes in Fiji.</div>
+            <div class="skill">Extensive knowledge of governance, rule of law & strengthening democracy in Fiji and the Pacific region</div>
+            <div class="skill">Demonstrated record of providing complex and high level legal advice & counsel</div>
+            <div class="skill">Ability to network, communicate and represent effectively at national, regional and international levels</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="sidebar card" aria-label="Additional information">
+        <div class="avatar" aria-hidden="true">AG — Hon. John Doe</div>
+        <div class="info-list">
+          <div class="muted">Location</div>
+          <div>Capital City, Country</div>
+          <div class="muted" style="margin-top:8px">Languages</div>
+          <div>English • [Other Languages]</div>
+          <div class="muted" style="margin-top:8px">Awards</div>
+          <div>Justice Leadership Award (2022), Excellence in Public Service (2020)</div>
+          <div class="muted" style="margin-top:8px">Availability</div>
+          <div>Available for consultancy & speaking engagements</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <div>
+        <section id="experience" class="card reveal" tabindex="-1" aria-label="Work experience timeline">
+          <h2>Experience</h2>
+          
+          <div class="timeline">
+            <article class="item" tabindex="0">
+              <strong>Attorney General — Ministry of Justice - Fiji</strong>
+              <div class="muted">2024-2025</div>
+            </article>
+            
+            <article class="item" tabindex="0">
+              <strong>Consultant, Toganivalu Legal - Fiji</strong>
+              <div class="muted">2023</div>
+            </article>
+            
+            <article class="item" tabindex="0">
+              <strong>Solicitor General - Cook Islands</strong>
+              <div class="muted">2022</div>
+            </article>
+            
+            <article class="item" tabindex="0">
+              <strong>Consultant, Toganivalu Legal - Fiji</strong>
+              <div class="muted">2020-2022</div>
+            </article>
+            
+            <article class="item" tabindex="0">
+              <strong>Attorney General — Ministry of Justice - Fiji</strong>
+              <div class="muted">2024-2025</div>
+            </article>
+            
+            <article class="item" tabindex="0">
+              <strong>Attorney General — Ministry of Justice - Fiji</strong>
+              <div class="muted">2024-2025</div>
+            </article>
+            
+            <article class="item" tabindex="0">
+              <strong>Attorney General — Ministry of Justice - Fiji</strong>
+              <div class="muted">2024-2025</div>
+            </article>
+            
+            <article class="item" tabindex="0">
+              <strong>Attorney General — Ministry of Justice - Fiji</strong>
+              <div class="muted">2024-2025</div>
+            </article>
+            
+
+            
+          </div>
+        </section>
+
+        <section id="achievements" class="card reveal" tabindex="-1" aria-label="Professional achievements">
+  <h2>Achievements</h2>
+
+  <h3>Solicitor General | Cook Islands (Mar 2022 – Present)</h3>
+  <ul style="margin-top: 10px; color: var(--muted); line-height: 1.7;">
+    <li>Instrumental in drafting the new Anti-Corruption Act, 2023.</li>
+    <li>Managed and supervised the operations of the Crown Law Office.</li>
+    <li>Provided high-level and complex legal advice to the Prime Minister, Cabinet, and Ministers.</li>
+    <li>Negotiated, advised, and drafted contracts and legal agreements.</li>
+    <li>Advised on international agreements and conventions.</li>
+    <li>Oversaw legal drafting functions for government legislation and policy.</li>
+    <li>Controlled departmental budget and financial management processes.</li>
+    <li>Mentored and supervised professional legal staff to strengthen capacity.</li>
+  </ul>
+
+  <h3>Secretary for Justice & Border Control | Republic of Nauru (2016 – 2019)</h3>
+  <ul style="margin-top: 10px; color: var(--muted); line-height: 1.7;">
+    <li>Provided strategic leadership and oversight of the Department of Justice and related units including Corrections, Human Rights, Quarantine, Immigration, and the Financial Intelligence Unit.</li>
+    <li>Managed and supervised all litigation for and against the Republic.</li>
+    <li>Vetted and commented on draft Bills and legislation before Parliament.</li>
+    <li>Represented Government at high-level conferences and workshops.</li>
+    <li>Led senior staff recruitment, performance appraisals, and capacity building programs.</li>
+    <li>Collaborated with other government departments to formulate and implement national policies.</li>
+  </ul>
+
+  <h3>Solicitor General / Registrar, Supreme Court | Republic of Nauru (2013 – 2019)</h3>
+  <ul style="margin-top: 10px; color: var(--muted); line-height: 1.7;">
+    <li>Conducted civil litigation on behalf of the Republic.</li>
+    <li>Provided legal opinions, research, and Cabinet briefings.</li>
+    <li>Drafted Cabinet submissions, ministerial speeches, and vetted legal agreements.</li>
+    <li>Oversaw judicial administration for the District and Supreme Courts.</li>
+    <li>Supervised junior lawyers and paralegals, strengthening institutional capacity.</li>
+  </ul>
+
+  <h3>Senior Trainer | Pacific Community, RRRT (2012 – 2013)</h3>
+  <ul style="margin-top: 10px; color: var(--muted); line-height: 1.7;">
+    <li>Developed human rights policy frameworks and delivered training to Pacific judges, lawyers, and civil society.</li>
+    <li>Trained senior public servants on rights-based approaches to information access.</li>
+    <li>Conducted in-depth legal research, policy analysis, and program evaluations.</li>
+    <li>Built strategic alliances and produced needs assessment reports for the Pacific region.</li>
+  </ul>
+
+  <h3>Human Rights Consultant | International Development Law Organisation, Rome (2011 – 2012)</h3>
+  <ul style="margin-top: 10px; color: var(--muted); line-height: 1.7;">
+    <li>Supported the Committee of Experts in drafting the new Constitution of Kenya.</li>
+  </ul>
+
+  <h3>Director, Centre for the Independence of Judges & Lawyers | International Commission of Jurists, Geneva (2011 – 2012)</h3>
+  <ul style="margin-top: 10px; color: var(--muted); line-height: 1.7;">
+    <li>Produced position and policy papers on judicial independence.</li>
+    <li>Represented the organisation in global conferences on rule of law and human rights.</li>
+    <li>Developed and managed high-profile rule of law and human rights defender programs.</li>
+    <li>Strengthened international human rights standards and norms through advocacy.</li>
+    <li>Drafted funding proposals and engaged with donors to secure program sustainability.</li>
+  </ul>
+</section>
+
+      </div>
+
+      <aside>
+        <section id="contact" class="card contact-card reveal" aria-label="Contact form">
+          <h3>Contact</h3>
+          <p class="small">Interested in getting in touch? Send a message below:</p>
+          <form
+            onsubmit="event.preventDefault(); window.location.href='mailto:john.doe@justice.gov?subject=Contact from Attorney General Portfolio';"
+            aria-label="Contact form"
+          >
+            <input name="name" placeholder="Your name" required aria-required="true" style="margin-bottom: 8px" />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your email"
+              required
+              aria-required="true"
+              style="margin-bottom: 8px"
+            />
+            <textarea
+              name="message"
+              rows="4"
+              placeholder="Your message"
+              required
+              aria-required="true"
+              style="margin-bottom: 8px"
+            ></textarea>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <button class="btn btn-primary" type="submit">Send Email</button>
+            </div>
+          </form>
+        </section>
+      </aside>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Hon. John Doe — Attorney General Portfolio</div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const revealEls = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.12 }
+    );
+    revealEls.forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
